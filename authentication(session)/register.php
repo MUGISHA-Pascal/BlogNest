@@ -6,7 +6,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $password=$_POST['password'];
     $stmt=$conn->prepare("INSERT INTO sessions (username,password) VALUES (?,?)");
     $stmt->bind_param("ss",$username,$password);
-    $stmt->execute();
+    if ($stmt->execute()) {
+        header("Location: login.php");
+        exit;
+    } else {
+        echo "Error: " . $stmt->error;
+    }
 }
 ?>
 <!DOCTYPE html>
