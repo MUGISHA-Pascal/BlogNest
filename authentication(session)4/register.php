@@ -1,6 +1,6 @@
 <?php
 require("includes/db.php");
-if($_SERVER["REQUEST_METHOD"]=="post"){
+if($_SERVER["REQUEST_METHOD"]=="POST"){
     $username=$_POST["username"];
     $password=$_POST["password"];
     $stmt=$conn->prepare("INSERT INTO sessions (username,password) VALUES (?,?)");
@@ -20,10 +20,10 @@ if($_SERVER["REQUEST_METHOD"]=="post"){
 <body>
     <form action="register.php" method="post">
         <p>username : </p>
-        <input type="text" name="username" id="username">
+        <input type="text" name="username" id="username" required>
        <br>
        <p>password : </p>
-       <input type="password" name="password" id="password">
+       <input type="password" name="password" id="password" required>
        <br>
        <br>
        <input type="submit" >
