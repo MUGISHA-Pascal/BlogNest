@@ -1,9 +1,13 @@
 <?php
 require("includes/db.php");
-if($_SESSION["REQUEST_METHOD"]=="post"){
+if($_SERVER["REQUEST_METHOD"]=="post"){
     $username=$_POST["username"];
     $password=$_POST["password"];
-    $stmt=
+    $stmt=$conn->prepare("INSERT INTO sessions (username,password) VALUES (?,?)");
+    $stmt->bind_param("ss",$username,$password);
+   if ($stmt->execute()){
+      header("Location:login.php");
+   }
 }
 ?>
 <!DOCTYPE html>
@@ -19,9 +23,10 @@ if($_SESSION["REQUEST_METHOD"]=="post"){
         <input type="text" name="username" id="username">
        <br>
        <p>password : </p>
-       <input type="text" name="password" id="password">
+       <input type="password" name="password" id="password">
        <br>
-       <input type="submit" value="Register">
+       <br>
+       <input type="submit" >
     </form>
 </body>
 </html>
