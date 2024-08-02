@@ -3,6 +3,7 @@ const bodyparser = require("body-parser");
 const app = express();
 const blog = require("./routes/blog");
 const keys = require("./keys");
+const blog = require("./model/blogPost");
 const mongoose = require("mongoose");
 
 mongoose.connect(keys.mongodbURL);
