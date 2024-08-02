@@ -4,6 +4,6 @@ const blogSchema = new mongoose.Schema({
   blog: String,
   date: { type: Date, default: Date.now },
 });
-const blog = mongoose.model("blog", blogSchema);
+const blogPost = mongoose.model("blogPost", blogSchema);
 
-module.exports = blog;
+module.exports = blogPost;

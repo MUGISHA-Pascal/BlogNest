@@ -1,14 +1,14 @@
 const express = require("express");
 const bodyparser = require("body-parser");
 const app = express();
-const blog = require("./routes/blog");
+const blogRoutes = require("./routes/blog");
 const keys = require("./keys");
-const blog = require("./model/blogPost");
+const blogPost = require("./model/blogPost");
 const mongoose = require("mongoose");
 
 mongoose.connect(keys.mongodbURL);
-app.use("/blog", blog);
 app.use(bodyparser.json());
+app.use("/blog", blogRoutes);
 
 app.listen(3000, () => {
   console.log("app is running on port 3000");
