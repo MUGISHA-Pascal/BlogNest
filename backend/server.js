@@ -6,6 +6,7 @@ const keys = require("./keys");
 const blogPost = require("./model/blogPost");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
+const passport_setup = require("./config/passport_setup");
 
 mongoose.connect(keys.mongodbURL);
 app.set("view engine", "ejs");
