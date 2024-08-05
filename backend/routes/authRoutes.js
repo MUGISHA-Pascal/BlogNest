@@ -7,11 +7,16 @@ authRoutes.get(
   "/google",
   passport.authenticate("google", { scope: ["profile"] })
 );
+authRoutes.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.clearCookie("user cookie");
+  res.redirect("/auth/login");
+});
 authRoutes.get(
   "/google/redirect",
   passport.authenticate("google"),
   (req, res) => {
-    console.log("redirection");
+    res.redirect("/profile");
   }
 );
 module.exports = authRoutes;
