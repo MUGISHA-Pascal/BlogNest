@@ -3,9 +3,9 @@ import Bloglist from "./Bloglist";
 
 const Home = () => {
   const [blogs, setBlogs] = useState([
-    { title: "coding", author: "pascal", id: 1, body: "this is it" },
-    { title: "playing", author: "mugisha", id: 2, body: "this is also it" },
-    { title: "praying", author: "daddy", id: 3, body: "this is not it" },
+    { title: "coding", author: "pascal", id: 1, details: "this is it" },
+    { title: "playing", author: "mugisha", id: 2, details: "this is also it" },
+    { title: "praying", author: "daddy", id: 3, details: "this is not it" },
   ]);
   return (
     <>
