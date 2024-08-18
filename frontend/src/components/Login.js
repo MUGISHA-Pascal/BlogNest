@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const Signup = () => {
+
+const Login = () => {
   return (
     <>
       <div class="flex items-center justify-center pt-10">
         <form class="flex flex-col bg-gray-100 w-1/2 rounded-md">
           <p class="text-blue-600 font-bold text-2xl shadow-md pb-4 p-2 mb-6">
-            Signup
+            Login
           </p>
           <div>
             <label for="username" class="text-gray-600 mr-14">
@@ -30,29 +31,19 @@ const Signup = () => {
               class="h-8 w-96 focus:outline-none rounded-md mb-4"
             />
           </div>
-          <div class="flex justify-start ml-20 ">
-            <label for="email" class="text-gray-600 mr-16">
-              email :
-            </label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              class="h-8 w-96 focus:outline-none rounded-md mb-4"
-            />
-          </div>
+
           <div class="flex flex-row items-center justify-center">
             <button
               type="submit"
               class="pl-4 pr-4 p-2 bg-blue-600 rounded-xl w-40 text-gray-100 ml-4 hover:opacity-70 mb-10"
             >
-              Signup
+              Login
             </button>
 
             <p class="mb-10 ml-4">
-              arleady have an account{" "}
-              <Link to="/login" class="text-blue-500">
-                Login
+              don't have an account
+              <Link to="/signup" class="text-blue-500 ml-2">
+                signup
               </Link>
             </p>
           </div>
@@ -62,4 +53,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;

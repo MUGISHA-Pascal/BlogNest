@@ -14,6 +14,12 @@ const Navbar = () => {
             home
           </Link>
           <Link
+            to="/signup"
+            class="border-2 border-blue-600 rounded-full text-blue-600 pl-4 pr-4 p-2 ml-4"
+          >
+            signup
+          </Link>
+          <Link
             to="/create"
             class="pl-4 pr-4 p-2 bg-blue-600 rounded-full text-gray-100 ml-4 hover:opacity-70"
           >
