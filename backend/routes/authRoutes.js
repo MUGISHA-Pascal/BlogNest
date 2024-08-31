@@ -3,6 +3,7 @@ const passport = require("passport");
 authRoutes.get("/login", (req, res) => {
   res.render("login");
 });
+authRoutes.post("/signup", async (req, res) => {});
 authRoutes.get(
   "/google",
   passport.authenticate("google", { scope: ["profile"] })

@@ -1,0 +1,17 @@
+{
+  "blogs": [
+    { "title": "coding", "author": "pascal", "id": 1, "details": "this is it" },
+    {
+      "title": "playing",
+      "author": "mugisha",
+      "id": 2,
+      "details": "this is also it"
+    },
+    {
+      "title": "praying",
+      "author": "daddy",
+      "id": 3,
+      "details": "this is not it"
+    }
+  ]
+}
