@@ -1,9 +1,21 @@
 const authRoutes = require("express").Router();
 const passport = require("passport");
+const jwtUser = require("../model/jwtUser");
 authRoutes.get("/login", (req, res) => {
   res.render("login");
 });
-authRoutes.post("/signup", async (req, res) => {});
+authRoutes.post("/signup", async (req, res) => {
+  {
+    const { username, email, password } = req.body;
+    try {
+      const user = await jwtUser({ username, email, password }).save();
+
+      res.json({ user });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+});
 authRoutes.get(
   "/google",
   passport.authenticate("google", { scope: ["profile"] })
