@@ -9,6 +9,7 @@ const authRoutes = require("./routes/authRoutes");
 const passport_setup = require("./config/passport_setup");
 const session = require("express-session");
 const profileRoutes = require("./routes/profileRoutes");
+const cookieParser = require("cookie-parser");
 const passport = require("passport");
 
 mongoose.connect(keys.mongodbURL);
@@ -23,6 +24,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cookieParser());
 
 app.set("view engine", "ejs");
 app.use(bodyparser.json());
