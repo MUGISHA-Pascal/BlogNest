@@ -1,11 +1,30 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const [username, setusername] = useState("");
+  const [password, setpassword] = useState("");
+  const navigate = useNavigate();
+  const handlesubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:4000/auth/auth_login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    });
+    const result = await response.json();
+    if (result) {
+      navigate("/");
+    }
+  };
+
   return (
     <>
       <div className="flex items-center justify-center pt-10">
-        <form className="flex flex-col bg-gray-100 w-1/2 rounded-md">
+        <form
+          className="flex flex-col bg-gray-100 w-1/2 rounded-md"
+          onSubmit={handlesubmit}
+        >
           <p className="text-blue-600 font-bold text-2xl shadow-md pb-4 p-2 mb-6">
             Login
           </p>
@@ -14,6 +33,10 @@ const Login = () => {
               username :
             </label>
             <input
+              value={username}
+              onChange={(e) => {
+                setusername(e.target.value);
+              }}
               type="text"
               id="username"
               name="username"
@@ -25,7 +48,11 @@ const Login = () => {
               password :
             </label>
             <input
-              type="text"
+              type="password"
+              value={password}
+              onChange={(e) => {
+                setpassword(e.target.value);
+              }}
               id="password"
               name="password"
               className="h-8 w-96 focus:outline-none rounded-md mb-4"

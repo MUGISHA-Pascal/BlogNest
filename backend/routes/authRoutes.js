@@ -11,8 +11,9 @@ authRoutes.post("/auth_login", async (req, res) => {
   const { username, password } = req.body;
   try {
     const user = await jwtUser.login(username, password);
-    const token = await jwt.sign(user._id, keys.secret_key, {
-      expiresIn: 24 * 60 * 60 * 1000,
+    console.log(user);
+    const token = await jwt.sign({ id: user._id }, keys.secret_key, {
+      expiresIn: "1d",
     });
     res.cookie("jwt", token, { maxAge: maxAge, httpOnly: true });
     res.json({ user });
@@ -26,7 +27,7 @@ authRoutes.post("/signup", async (req, res) => {
     try {
       const user = await jwtUser({ username, email, password }).save();
       const token = await jwt.sign({ id: user._id }, keys.secret_key, {
-        expiresIn: 24 * 60 * 60 * 1000,
+        expiresIn: "1d",
       });
       res.cookie("jwt", token, { maxAge: maxAge, httpOnly: true });
       res.json({ user });

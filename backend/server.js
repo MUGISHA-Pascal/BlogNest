@@ -14,6 +14,7 @@ const passport = require("passport");
 const cors = require("cors");
 
 mongoose.connect(keys.mongodbURL);
+app.use(cookieParser());
 app.use(cors());
 app.use(
   session({
@@ -26,8 +27,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cookieParser());
-
 app.set("view engine", "ejs");
 app.use(bodyparser.json());
 app.use("/blog", blogRoutes);

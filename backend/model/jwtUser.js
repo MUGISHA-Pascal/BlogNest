@@ -12,7 +12,7 @@ jwtUserSchema.pre("save", async function () {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-jwtUserSchema.statics.login = async (username, password) => {
+jwtUserSchema.statics.login = async function (username, password) {
   try {
     const user = await this.findOne({ username });
     if (user) {
