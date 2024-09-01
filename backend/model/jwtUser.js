@@ -7,7 +7,7 @@ const jwtUserSchema = new mongoose.Schema({
   password: String,
 });
 
-jwtUserSchema.pre("pre", async function () {
+jwtUserSchema.pre("save", async function () {
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
 });

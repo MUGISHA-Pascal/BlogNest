@@ -11,8 +11,10 @@ const session = require("express-session");
 const profileRoutes = require("./routes/profileRoutes");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
+const cors = require("cors");
 
 mongoose.connect(keys.mongodbURL);
+app.use(cors());
 app.use(
   session({
     name: "user cookie",
